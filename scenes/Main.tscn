@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://d0ymn6u246bv2"]
 
-[ext_resource type="Script" path="res://scenes/Player.cs" id="1_somgi"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_somgi"]
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://prefabs/character_prefab.tscn" id="2_g2iyx"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob-shadow.png" id="3_gq1fq"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://prefabs/cloud.res" id="4_dxhne"]
