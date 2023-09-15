@@ -38,7 +38,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://Prefabs/cloud.res"
+"save_to_file/path": "res://prefabs/cloud.res"
 }
 }
 }
