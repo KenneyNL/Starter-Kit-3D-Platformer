@@ -1,18 +1,18 @@
 [gd_scene load_steps=22 format=3 uid="uid://d0ymn6u246bv2"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_rvwhc"]
+[ext_resource type="Script" path="res://scenes/Player.cs" id="1_somgi"]
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://prefabs/character_prefab.tscn" id="2_g2iyx"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob-shadow.png" id="3_gq1fq"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://prefabs/cloud.res" id="4_dxhne"]
-[ext_resource type="Script" path="res://scripts/view.gd" id="5_bg0fr"]
 [ext_resource type="AudioStream" uid="uid://ddiy2lbypiwqv" path="res://audio/walking.ogg" id="5_wfvi2"]
+[ext_resource type="Script" path="res://scripts/View.cs" id="6_aqfpb"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://prefabs/platform_prefab.tscn" id="6_sdmev"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://prefabs/platform_medium_prefab.tscn" id="7_ixpj3"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://prefabs/platform_grass_large_round_prefab.tscn" id="8_4oh1e"]
 [ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="9_fw1f5"]
 [ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://prefabs/coin_prefab.tscn" id="10_fwhys"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="11_apvpm"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita-one-regular.ttf" id="11_dkqcs"]
+[ext_resource type="Script" path="res://scripts/Hud.cs" id="12_47li6"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iakcd"]
@@ -68,10 +68,10 @@ shadow_offset = Vector2(2, 2)
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kt478")
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("View")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("1_rvwhc")
-view = NodePath("../View")
+script = ExtResource("1_somgi")
+View = NodePath("../View")
 
 [node name="Collider" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
@@ -111,10 +111,10 @@ volume_db = -5.0
 pitch_scale = 1.25
 autoplay = true
 
-[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("Target")]
 transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
-script = ExtResource("5_bg0fr")
-target = NodePath("../Player")
+script = ExtResource("6_aqfpb")
+Target = NodePath("../Player")
 
 [node name="Camera" type="Camera3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -164,7 +164,7 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("11_apvpm")
+script = ExtResource("12_47li6")
 
 [node name="Icon" type="TextureRect" parent="HUD"]
 offset_left = 57.0
@@ -190,6 +190,6 @@ offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 
-[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
+[connection signal="CoinCollected" from="Player" to="HUD" method="OnCoinCollected"]
 
 [editable path="Player/Character"]

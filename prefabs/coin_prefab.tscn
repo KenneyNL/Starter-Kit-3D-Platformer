@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dfpisimsgf5ce"]
 
-[ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/textures/colormap.png" id="2_04qt4"]
-[ext_resource type="Script" path="res://scripts/coin.gd" id="2_gaakh"]
+[ext_resource type="Script" path="res://scripts/Coin.cs" id="1_717wj"]
+[ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/Textures/colormap.png" id="2_04qt4"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_xl1k0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct61v"]
@@ -67,7 +67,7 @@ point_count = 3
 colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 
 [node name="coin" type="Area3D"]
-script = ExtResource("2_gaakh")
+script = ExtResource("1_717wj")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -94,4 +94,4 @@ scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_6a7l3")
 color_ramp = SubResource("Gradient_7tsk2")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
