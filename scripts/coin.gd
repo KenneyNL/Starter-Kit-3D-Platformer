@@ -16,8 +16,6 @@ func _on_body_entered(body):
 		$Particles.emitting = false
 		
 		grabbed = true
-		
-		#queue_free() # Remove coin
 
 # Rotating, animating up and down
 

@@ -166,7 +166,7 @@ shadow_opacity = 0.75
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("11_apvpm")
 
-[node name="TextureRect" type="TextureRect" parent="HUD"]
+[node name="Icon" type="TextureRect" parent="HUD"]
 offset_left = 57.0
 offset_top = 67.0
 offset_right = 313.0

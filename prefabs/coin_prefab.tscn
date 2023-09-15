@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dfpisimsgf5ce"]
 
-[ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/Textures/colormap.png" id="2_04qt4"]
+[ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/textures/colormap.png" id="2_04qt4"]
 [ext_resource type="Script" path="res://scripts/coin.gd" id="2_gaakh"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_xl1k0"]
 

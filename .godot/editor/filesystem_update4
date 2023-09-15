@@ -1,9 +1,3 @@
-res://Scenes/Main.tscn
-res://Scripts/view.gd
 res://scenes/Main.tscn
+res://scenes/main.tscn
 res://scripts/coin.gd
-res://scripts/player.gd
-res://scripts/hud.gd
-res://scripts/view.gd
-res://scripts/audio.gd
-res://prefabs/coin_prefab.tscn
