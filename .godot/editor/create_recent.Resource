@@ -1,0 +1,3 @@
+GDScript
+VisualShader
+ParticleProcessMaterial
