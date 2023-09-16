@@ -142,4 +142,4 @@ func collect_coin():
 	
 	coins += 1
 	
-	emit_signal("coin_collected", coins)
+	coin_collected.emit(coins)
