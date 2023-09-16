@@ -96,7 +96,9 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
-	movement_velocity = view.basis * input * movement_speed * delta
+	input  = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	
+	movement_velocity = input * movement_speed * delta
 	
 	# Jumping
 	
