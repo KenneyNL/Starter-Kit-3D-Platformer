@@ -143,3 +143,8 @@ func collect_coin():
 	coins += 1
 	
 	emit_signal("coin_collected", coins)
+
+# Respawn
+
+func _on_respawn_body_entered(_body):
+	get_tree().reload_current_scene()

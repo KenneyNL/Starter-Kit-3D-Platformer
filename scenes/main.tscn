@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0ymn6u246bv2"]
+[gd_scene load_steps=23 format=3 uid="uid://d0ymn6u246bv2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rvwhc"]
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://prefabs/character_prefab.tscn" id="2_g2iyx"]
@@ -57,6 +57,9 @@ proximity_fade_distance = 0.25
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxyhw"]
+size = Vector3(30, 1, 30)
+
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
 font = ExtResource("11_dkqcs")
 font_size = 48
@@ -79,11 +82,20 @@ shape = SubResource("CapsuleShape3D_gdq8c")
 
 [node name="Character" parent="Player" instance=ExtResource("2_g2iyx")]
 
+[node name="leg-left" parent="Player/Character/character2/root" index="0"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
+
+[node name="leg-right" parent="Player/Character/character2/root" index="1"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
+
+[node name="torso" parent="Player/Character/character2/root" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -1.80478e-15, 0.17625, -0.02375)
+
 [node name="arm-left" parent="Player/Character/character2/root/torso" index="0"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.2, 0)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.2, 0)
 
 [node name="arm-right" parent="Player/Character/character2/root/torso" index="1"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1445, 0)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1445, 0)
 
 [node name="Shadow" type="Decal" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
@@ -118,6 +130,7 @@ target = NodePath("../Player")
 
 [node name="Camera" type="Camera3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+current = true
 fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
@@ -158,6 +171,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -1.33003)
 [node name="coin4" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -2.33003)
 
+[node name="respawn" type="Area3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -15, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/respawn"]
+shape = SubResource("BoxShape3D_bxyhw")
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
 shadow_enabled = true
@@ -191,5 +210,6 @@ text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
+[connection signal="body_entered" from="World/respawn" to="Player" method="_on_respawn_body_entered"]
 
 [editable path="Player/Character"]
