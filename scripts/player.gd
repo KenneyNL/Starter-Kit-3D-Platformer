@@ -6,8 +6,8 @@ signal coin_collected
 @export var view: Node3D
 
 @export_subgroup("Properties")
-@export var movement_speed = 200
-@export var jump_strength = 6
+@export var movement_speed = 250
+@export var jump_strength = 7
 
 var movement_velocity: Vector3
 var rotation_direction: float
@@ -27,10 +27,6 @@ var coins = 0
 
 # Functions
 
-func _ready():
-	
-	pass
-
 func _physics_process(delta):
 	
 	# Handle functions
@@ -38,7 +34,7 @@ func _physics_process(delta):
 	handle_controls(delta)
 	handle_gravity(delta)
 	
-	handle_animations()
+	handle_effects()
 	
 	# Movement
 
@@ -57,7 +53,12 @@ func _physics_process(delta):
 		
 	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
 	
-	# Scale animation (juice)
+	# Falling/respawning
+	
+	if position.y < -10:
+		get_tree().reload_current_scene()
+	
+	# Animation for scale (jumping and landing)
 	
 	model.scale = model.scale.lerp(Vector3(1, 1, 1), delta * 10)
 	
@@ -65,12 +66,13 @@ func _physics_process(delta):
 	
 	if is_on_floor() and gravity > 2 and !previously_floored:
 		model.scale = Vector3(1.25, 0.75, 1.25)
+		Audio.play("res://sounds/land.ogg")
 	
 	previously_floored = is_on_floor()
 
 # Handle animation(s)
 
-func handle_animations():
+func handle_effects():
 	
 	particles_trail.emitting = false
 	sound_footsteps.stream_paused = true
@@ -96,14 +98,17 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
-	movement_velocity = view.basis * input * movement_speed * delta
+	input  = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	
+	movement_velocity = input * movement_speed * delta
+	#movement_velocity = view.basis * input.limit_length(1.0) * movement_speed * delta
 	
 	# Jumping
 	
 	if Input.is_action_just_pressed("jump"):
 		
 		if jump_single or jump_double:
-			Audio.play("res://audio/jump.ogg")
+			Audio.play("res://sounds/jump.ogg")
 		
 		if jump_double:
 			
@@ -142,9 +147,4 @@ func collect_coin():
 	
 	coins += 1
 	
-	emit_signal("coin_collected", coins)
-
-# Respawn
-
-func _on_respawn_body_entered(_body):
-	get_tree().reload_current_scene()
+	coin_collected.emit(coins)

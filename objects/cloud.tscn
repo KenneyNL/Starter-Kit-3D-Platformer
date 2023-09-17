@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy017k58p20sk"]
+
+[ext_resource type="PackedScene" uid="uid://bsrmqj84lksd7" path="res://models/cloud.glb" id="1_pjiy0"]
+[ext_resource type="Script" path="res://objects/cloud.gd" id="2_hugjq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nets"]
+transparency = 1
+distance_fade_mode = 1
+distance_fade_min_distance = 2.0
+distance_fade_max_distance = 3.0
+
+[node name="cube" instance=ExtResource("1_pjiy0")]
+script = ExtResource("2_hugjq")
+
+[node name="cube2" parent="." index="0"]
+visibility_range_fade_mode = 1
+surface_material_override/0 = SubResource("StandardMaterial3D_8nets")

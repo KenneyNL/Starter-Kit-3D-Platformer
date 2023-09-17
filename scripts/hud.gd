@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 func _on_coin_collected(coins):
 	

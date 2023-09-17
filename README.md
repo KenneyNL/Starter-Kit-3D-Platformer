@@ -2,7 +2,7 @@
 
 # Starter Kit 3D Platformer
 
-This package includes a basic template for a 3D platformer game in Godot 4.1. Includes features like;
+This package includes a basic template for a 3D platformer game in Godot 4.1.1.stable.official. Includes features like;
 
 - Character controller (with double jump)
 - Camera controls (rotate, zoom)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bsrmqj84lksd7"
-path="res://.godot/imported/cloud.glb-53daedc24f8d7f4baa42baf232c66643.scn"
+uid="uid://biyd6x403gvny"
+path="res://.godot/imported/platform-falling.glb-a1321a8710589d27b2a6e247cfe23359.scn"
 
 [deps]
 
-source_file="res://models/cloud.glb"
-dest_files=["res://.godot/imported/cloud.glb-53daedc24f8d7f4baa42baf232c66643.scn"]
+source_file="res://models/platform-falling.glb"
+dest_files=["res://.godot/imported/platform-falling.glb-a1321a8710589d27b2a6e247cfe23359.scn"]
 
 [params]
 

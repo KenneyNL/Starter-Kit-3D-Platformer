@@ -17,7 +17,7 @@ func _ready():
 		available.append(p)
 		
 		p.volume_db = -10
-		p.connect("finished", Callable(self, "_on_stream_finished").bind(p))
+		p.finished.connect(_on_stream_finished.bind(p))
 		p.bus = bus
 
 
