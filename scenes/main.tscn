@@ -1,10 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqqgyqafm7xwp"]
+[gd_scene load_steps=15 format=3 uid="uid://bqqgyqafm7xwp"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_rvwhc"]
-[ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="2_g2iyx"]
-[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="3_gq1fq"]
-[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="4_57mmn"]
-[ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/walking.ogg" id="5_3o1yd"]
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_ahusb"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="5_bg0fr"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="6_sdmev"]
 [ext_resource type="PackedScene" uid="uid://rjh4ifidqrfp" path="res://objects/platform_medium.tscn" id="7_ixpj3"]
@@ -17,50 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lg8b7"]
-sky_horizon_color = Color(0.67451, 0.682353, 0.698039, 1)
-sky_curve = 0.0175
-ground_bottom_color = Color(1, 1, 1, 1)
-ground_curve = 0.171484
-
-[sub_resource type="Sky" id="Sky_7bk1c"]
-sky_material = SubResource("ProceduralSkyMaterial_lg8b7")
-
-[sub_resource type="Environment" id="Environment_kt478"]
-background_mode = 1
-background_color = Color(0.752941, 0.776471, 0.827451, 1)
-sky = SubResource("Sky_7bk1c")
-ambient_light_source = 2
-ambient_light_color = Color(0.662745, 0.694118, 0.772549, 1)
-ambient_light_energy = 1.15
-tonemap_mode = 2
-ssao_enabled = true
-ssao_radius = 0.45
-ssao_intensity = 1.0
-ssao_power = 15.0
-glow_enabled = true
-glow_levels/2 = 0.6
-glow_levels/3 = 0.6
-glow_levels/5 = 0.0
-glow_intensity = 2.0
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdq8c"]
-radius = 0.3
-height = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7stj"]
-diffuse_mode = 2
-specular_mode = 2
-metallic_specular = 0.0
-backlight = Color(0, 0.521569, 0.709804, 1)
-billboard_keep_scale = true
-grow_amount = 1.882
-proximity_fade_distance = 0.25
-
-[sub_resource type="Curve" id="Curve_xh1e2"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
 font = ExtResource("17_tk810")
 font_size = 48
@@ -70,59 +23,10 @@ shadow_offset = Vector2(2, 2)
 [node name="Main" type="Node3D"]
 
 [node name="Environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kt478")
+environment = ExtResource("1_ahusb")
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("1_rvwhc")
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_onms2")]
 view = NodePath("../View")
-
-[node name="Collider" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
-shape = SubResource("CapsuleShape3D_gdq8c")
-
-[node name="Character" parent="Player" instance=ExtResource("2_g2iyx")]
-
-[node name="leg-left" parent="Player/Character/character2/root" index="0"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.125, 0.17625, -0.02375)
-
-[node name="leg-right" parent="Player/Character/character2/root" index="1"]
-transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -0.125, 0.17625, -0.02375)
-
-[node name="torso" parent="Player/Character/character2/root" index="2"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -1.80478e-15, 0.17625, -0.02375)
-
-[node name="arm-left" parent="Player/Character/character2/root/torso" index="0"]
-transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.3, 0.2, 0)
-
-[node name="arm-right" parent="Player/Character/character2/root/torso" index="1"]
-transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.3, 0.1445, 0)
-
-[node name="Shadow" type="Decal" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
-size = Vector3(1, 2, 1)
-texture_albedo = ExtResource("3_gq1fq")
-modulate = Color(1, 1, 1, 0.705882)
-normal_fade = 0.5
-
-[node name="ParticlesTrail" type="CPUParticles3D" parent="Player"]
-material_override = SubResource("StandardMaterial3D_q7stj")
-cast_shadow = 0
-amount = 60
-mesh = ExtResource("4_57mmn")
-emission_shape = 1
-emission_sphere_radius = 0.2
-particle_flag_align_y = true
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, 0.1, 0)
-scale_amount_min = 0.75
-scale_amount_curve = SubResource("Curve_xh1e2")
-
-[node name="SoundFootsteps" type="AudioStreamPlayer" parent="Player"]
-stream = ExtResource("5_3o1yd")
-volume_db = -5.0
-pitch_scale = 1.25
-autoplay = true
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
@@ -257,7 +161,3 @@ offset_right = 368.0
 offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
-
-[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
-
-[editable path="Player/Character"]

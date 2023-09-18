@@ -5,6 +5,7 @@
 This package includes a basic template for a 3D platformer game in Godot 4.1.1.stable.official. Includes features like;
 
 - Character controller (with double jump)
+- Collectable coins and falling platforms
 - Camera controls (rotate, zoom)
 - Gamepad support
 - Sprites and 3D Models _(CC0 licensed)_

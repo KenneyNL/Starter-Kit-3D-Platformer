@@ -48,7 +48,7 @@ func _physics_process(delta):
 	
 	# Rotation
 	
-	if velocity.length() > 0:
+	if Vector2(velocity.z, velocity.x).length() > 0:
 		rotation_direction = Vector2(velocity.z, velocity.x).angle()
 		
 	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
@@ -98,10 +98,9 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
-	input  = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
 	
 	movement_velocity = input * movement_speed * delta
-	#movement_velocity = view.basis * input.limit_length(1.0) * movement_speed * delta
 	
 	# Jumping
 	
