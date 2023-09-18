@@ -48,7 +48,7 @@ func _physics_process(delta):
 	
 	# Rotation
 	
-	if velocity.length() > 0:
+	if Vector2(velocity.z, velocity.x).length() > 0:
 		rotation_direction = Vector2(velocity.z, velocity.x).angle()
 		
 	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
