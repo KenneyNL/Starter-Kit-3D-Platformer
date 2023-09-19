@@ -161,3 +161,5 @@ offset_right = 368.0
 offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
+
+[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
