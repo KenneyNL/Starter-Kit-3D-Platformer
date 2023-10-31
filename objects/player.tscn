@@ -33,6 +33,9 @@ shape = SubResource("CapsuleShape3D_gdq8c")
 
 [node name="Character" parent="." instance=ExtResource("2_nero3")]
 
+[node name="antenna" parent="Character/character/root/torso" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.999289, 0.0376902, 0, -0.0376902, 0.999289, 0, 0.6, 0)
+
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
