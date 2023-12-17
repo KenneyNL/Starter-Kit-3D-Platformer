@@ -107,16 +107,7 @@ func handle_controls(delta):
 	if Input.is_action_just_pressed("jump"):
 		
 		if jump_single or jump_double:
-			Audio.play("res://sounds/jump.ogg")
-		
-		if jump_double:
-			
-			gravity = -jump_strength
-			
-			jump_double = false
-			model.scale = Vector3(0.5, 1.5, 0.5)
-			
-		if(jump_single): jump()
+			jump()
 
 # Handle gravity
 
@@ -133,12 +124,17 @@ func handle_gravity(delta):
 
 func jump():
 	
+	Audio.play("res://sounds/jump.ogg")
+	
 	gravity = -jump_strength
 	
 	model.scale = Vector3(0.5, 1.5, 0.5)
 	
-	jump_single = false;
-	jump_double = true;
+	if jump_single:
+		jump_single = false;
+		jump_double = true;
+	else:
+		jump_double = false;
 
 # Collecting coins
 
