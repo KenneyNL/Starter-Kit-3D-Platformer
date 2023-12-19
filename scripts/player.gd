@@ -34,7 +34,7 @@ func _physics_process(delta):
 	handle_controls(delta)
 	handle_gravity(delta)
 	
-	handle_effects()
+	handle_effects(delta)
 	
 	# Movement
 
@@ -72,16 +72,23 @@ func _physics_process(delta):
 
 # Handle animation(s)
 
-func handle_effects():
+func handle_effects(delta):
 	
 	particles_trail.emitting = false
 	sound_footsteps.stream_paused = true
 	
 	if is_on_floor():
-		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
-			animation.play("walk", 0.5)
-			particles_trail.emitting = true
-			sound_footsteps.stream_paused = false
+		var horizontal_velocity = Vector2(velocity.x, velocity.z)
+		var speed_factor = horizontal_velocity.length() / movement_speed / delta
+		
+		if speed_factor > 0.05:
+			animation.play("walk", 0.5, speed_factor)
+			if speed_factor > 0.3:
+				sound_footsteps.stream_paused = false
+				sound_footsteps.pitch_scale = speed_factor
+			if speed_factor > 0.75:
+				particles_trail.emitting = true
+				
 		else:
 			animation.play("idle", 0.5)
 	else:
@@ -98,8 +105,11 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
-	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	input = input.rotated(Vector3.UP, view.rotation.y)
 	
+	if input.length() > 1:
+		input = input.normalized()
+		
 	movement_velocity = input * movement_speed * delta
 	
 	# Jumping
@@ -107,16 +117,7 @@ func handle_controls(delta):
 	if Input.is_action_just_pressed("jump"):
 		
 		if jump_single or jump_double:
-			Audio.play("res://sounds/jump.ogg")
-		
-		if jump_double:
-			
-			gravity = -jump_strength
-			
-			jump_double = false
-			model.scale = Vector3(0.5, 1.5, 0.5)
-			
-		if(jump_single): jump()
+			jump()
 
 # Handle gravity
 
@@ -133,12 +134,17 @@ func handle_gravity(delta):
 
 func jump():
 	
+	Audio.play("res://sounds/jump.ogg")
+	
 	gravity = -jump_strength
 	
 	model.scale = Vector3(0.5, 1.5, 0.5)
 	
-	jump_single = false;
-	jump_double = true;
+	if jump_single:
+		jump_single = false;
+		jump_double = true;
+	else:
+		jump_double = false;
 
 # Collecting coins
 
