@@ -80,19 +80,20 @@ func handle_effects(delta):
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
 		var speed_factor = horizontal_velocity.length() / movement_speed / delta
-		
 		if speed_factor > 0.05:
-			animation.play("walk", 0.5, speed_factor)
+			animation.play("walk", 0, speed_factor)
+				
 			if speed_factor > 0.3:
 				sound_footsteps.stream_paused = false
 				sound_footsteps.pitch_scale = speed_factor
+				
 			if speed_factor > 0.75:
 				particles_trail.emitting = true
 				
 		else:
-			animation.play("idle", 0.5)
+			animation.play("idle", 0)
 	else:
-		animation.play("jump", 0.5)
+		animation.play("jump", 0)
 
 # Handle movement input
 
