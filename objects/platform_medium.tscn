@@ -7,7 +7,7 @@ data = PackedVector3Array(1.5, 0.2, 1.3, 1.4, 0, 1.22, 1.355, 0, 1.355, 1.355, 0
 
 [node name="platform-medium" instance=ExtResource("1_ihbp6")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="platform-medium2" index="0"]
+[node name="platform-medium2#StaticBody3D" type="StaticBody3D" parent="." index="0"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="platform-medium2/StaticBody3D" index="0"]
+[node name="platform-medium2_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="platform-medium2#StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_gwolp")

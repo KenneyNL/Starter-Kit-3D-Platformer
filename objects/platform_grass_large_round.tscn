@@ -9,16 +9,16 @@ data = PackedVector3Array(-0.9567, 0.2, 2.3097, 0, 0.2, 2.5, 0, 0, 2.25, 0, 0, 2
 
 [node name="platform-grass-large-round" instance=ExtResource("1_k36fp")]
 
-[node name="grass-small" parent="platform-grass-large-round2" index="0" instance=ExtResource("2_dmbou")]
+[node name="platform-grass-large-round2#grass-small" parent="." index="0" instance=ExtResource("2_dmbou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2632, 0.490424, 1.54658)
 
-[node name="grass" parent="platform-grass-large-round2" index="1" instance=ExtResource("3_uynxe")]
+[node name="platform-grass-large-round2#grass" parent="." index="1" instance=ExtResource("3_uynxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38911, 0.443581, 1.45133)
 
-[node name="grass2" parent="platform-grass-large-round2" index="2" instance=ExtResource("3_uynxe")]
+[node name="platform-grass-large-round2#grass2" parent="." index="2" instance=ExtResource("3_uynxe")]
 transform = Transform3D(-0.403434, 0, 0.915009, 0, 1, 0, -0.915009, 0, -0.403434, 0.907642, 0.443581, -1.67143)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="platform-grass-large-round2" index="3"]
+[node name="platform-grass-large-round2#StaticBody3D" type="StaticBody3D" parent="." index="3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="platform-grass-large-round2/StaticBody3D" index="0"]
+[node name="platform-grass-large-round2_StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="platform-grass-large-round2#StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_xh0ma")
