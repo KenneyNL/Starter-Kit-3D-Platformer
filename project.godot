@@ -31,6 +31,10 @@ window/size/viewport_height=720
 
 movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_right={

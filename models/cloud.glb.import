@@ -30,4 +30,5 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/naming_version=0
 gltf/embedded_image_handling=1
