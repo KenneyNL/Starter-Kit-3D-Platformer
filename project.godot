@@ -108,8 +108,8 @@ zoom_out={
 
 [input_devices]
 
-virtual_controller/show_controller=true
-virtual_controller/enable_button_a=false
+virtual_controller/ios/enable_controller=true
+virtual_controller/ios/enable_button_a=false
 
 [rendering]
 
