@@ -114,3 +114,8 @@ virtual_controller/ios/enable_button_a=false
 [rendering]
 
 anti_aliasing/quality/screen_space_aa=1
+
+[xogot]
+
+project/editorState=[]
+project/breakpoints={}
