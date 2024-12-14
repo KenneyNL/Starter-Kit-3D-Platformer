@@ -1,5 +1,5 @@
 # Godot 4+ specific ignores
-.godot/
+.godot/editor/
 
 # Godot-specific ignores
 .import/
@@ -13,6 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Mac-specific ignores
+**/.DS_Store
 
 # Kenney ignores
 build/
