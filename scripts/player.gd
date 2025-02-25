@@ -93,6 +93,12 @@ func handle_effects(delta):
 
 		elif animation.current_animation != "idle":
 			animation.play("idle", 0.1)
+			
+		if animation.current_animation == "walk":
+			animation.speed_scale = speed_factor
+		else:
+			animation.speed_scale = 1.0
+			
 	elif animation.current_animation != "jump":
 		animation.play("jump", 0.1)
 
