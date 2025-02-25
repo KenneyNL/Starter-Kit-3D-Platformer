@@ -12,7 +12,7 @@ func _process(delta):
 		queue_free() # Remove platform if below threshold
 	
 	if falling:
-		gravity += 0.25
+		gravity += 15.0 * delta
 
 
 func _on_body_entered(_body):
