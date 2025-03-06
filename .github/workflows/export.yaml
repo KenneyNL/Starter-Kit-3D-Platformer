@@ -29,7 +29,7 @@ jobs:
     - name: Upload Zip
       run: |
         RESPONSE=$(curl --data-binary "@build.zip" \
-            "${{secrets.uploadUrl}}?godot_id=${{env.GODOT_ASSET_ID}}&xodot_id=${{env.XODOT_ASSET_ID}}&version=${{ github.ref_name }}" \
+            "${{secrets.uploadUrl}}?godot_id=${{vars.GODOT_ASSET_ID}}&xodot_id=${{vars.XODOT_ASSET_ID}}&version=${{ github.ref_name }}" \
             -H "apiKey: ${{secrets.apiKey}}")
         if [ $? -eq 0 ]; then
           echo "SUCCESS"
