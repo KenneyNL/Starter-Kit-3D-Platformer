@@ -113,6 +113,7 @@ virtual_controller/ios/enable_button_a=false
 
 [rendering]
 
+rendering_device/driver="metal"
 renderer/rendering_method="forward_plus"
 renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_s3tc_bptc=true
