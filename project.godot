@@ -113,6 +113,8 @@ virtual_controller/ios/enable_button_a=false
 
 [rendering]
 
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="forward_plus"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/screen_space_aa=1
