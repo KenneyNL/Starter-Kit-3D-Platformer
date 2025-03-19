@@ -24,16 +24,10 @@ jobs:
     - name: import project
       run: godot --headless -e --quit-after 100
     - name: Zip up Folder
-      run: zip -r build.zip . -x "*.git*" -x "*.github*" -x "*.vscode*" -x ".godot/editor/*" -x "build.zip"
+      run: ${{vars.ZIPCOMMAND}}
 
     - name: Upload Zip
       run: |
-        RESPONSE=$(curl --data-binary "@build.zip" \
-            "${{secrets.uploadUrl}}?godot_id=${{vars.GODOT_ASSET_ID}}&xodot_id=${{vars.XODOT_ASSET_ID}}&version=${{ github.ref_name }}" \
-            -H "apiKey: ${{secrets.apiKey}}")
-        if [ $? -eq 0 ]; then
-          echo "SUCCESS"
-        else
-          echo "FAILURE"
-          exit 1
-        fi
+       curl --data-binary "@build.zip" \
+            "${{secrets.uploadUrl}}?godot_id=${{vars.GODOT_ASSET_ID}}&xogot_id=${{vars.XOGOT_ASSET_ID}}&version=${{ github.ref_name }}&tags=${{vars.TAGS}}" \
+            -H "apiKey: ${{secrets.apiKey}}"
