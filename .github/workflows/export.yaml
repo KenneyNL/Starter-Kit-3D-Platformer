@@ -29,5 +29,5 @@ jobs:
     - name: Upload Zip
       run: |
        curl --data-binary "@build.zip" \
-            "${{secrets.uploadUrl}}?godot_id=${{vars.GODOT_ASSET_ID}}&xogot_id=${{vars.XOGOT_ASSET_ID}}&version=${{ github.ref_name }}&tags=${{vars.TAGS}}" \
+            "${{secrets.uploadUrl}}?godot_id=${{vars.GODOT_ASSET_ID}}&xogot_id=${{vars.XOGOT_ASSET_ID}}&version=${{ github.ref_name }}&tags=${{vars.TAGS}}&iconUrl=${{vars.ICON_URL}}${{vars.EXTRA_ARGS}}" \
             -H "apiKey: ${{secrets.apiKey}}"
