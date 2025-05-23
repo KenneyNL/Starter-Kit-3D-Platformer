@@ -10,6 +10,18 @@ jobs:
     name: Export to Asset-lib
     runs-on: macos-latest
 
+    env:
+      uploadUrl: ${{ secrets.uploadUrl }}
+      apiKey: ${{ secrets.apiKey }}
+      GODOT_ASSET_ID: ${{ vars.GODOT_ASSET_ID }}
+      XOGOT_ASSET_ID: ${{ vars.XOGOT_ASSET_ID }}
+      version: ${{ github.ref_name }}
+      TAGS: ${{ vars.TAGS }}
+      ICON_URL: ${{ vars.ICON_URL }}
+      EXTRA_ARGS: ${{ vars.EXTRA_ARGS }}
+      ZIPCOMMAND: ${{ vars.ZIPCOMMAND }}
+      BUILD_SCRIPT_URL: ${{ vars.BUILD_SCRIPT_URL }}
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -17,23 +29,12 @@ jobs:
     - uses: chickensoft-games/setup-godot@v1
       name: 🤖 Setup Godot
       with:
-          version: ${{vars.GODOT_VERSION}}
-          use-dotnet: false
-          include-templates: false
+        version: ${{ vars.GODOT_VERSION }}
+        use-dotnet: false
+        include-templates: false
 
-    - name: import project
-      run: godot --headless -e --quit-after 100
-    - name: Zip up Folder
-      run: zip -r build.zip . -x "*.git*" -x "*.github*" -x "*.vscode*" -x ".godot/editor/*" -x "build.zip"
-
-    - name: Upload Zip
+    - name: Download, chmod, and run build script
       run: |
-        RESPONSE=$(curl --data-binary "@build.zip" \
-            "${{secrets.uploadUrl}}?godot_id=${{env.GODOT_ASSET_ID}}&xodot_id=${{env.XODOT_ASSET_ID}}&version=${{ github.ref_name }}" \
-            -H "apiKey: ${{secrets.apiKey}}")
-        if [ $? -eq 0 ]; then
-          echo "SUCCESS"
-        else
-          echo "FAILURE"
-          exit 1
-        fi
+        curl -L "$BUILD_SCRIPT_URL" -o build.sh
+        chmod +x build.sh
+        ./build.sh
