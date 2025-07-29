@@ -3,7 +3,7 @@ extends Node3D
 var falling := false
 var gravity := 0.0
 
-func _process(delta):
+func _physics_process(delta):
 	scale = scale.lerp(Vector3(1, 1, 1), delta * 10) # Animate scale
 	
 	position.y -= gravity * delta
