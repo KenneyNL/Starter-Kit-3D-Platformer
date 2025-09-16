@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl2ed4gkybggf"]
+[gd_scene load_steps=11 format=3 uid="uid://dl2ed4gkybggf"]
 
 [ext_resource type="Script" uid="uid://br1k30d32naot" path="res://scripts/player.gd" id="1_ffboj"]
 [ext_resource type="PackedScene" uid="uid://c0e27836xgmhi" path="res://objects/character.tscn" id="2_nero3"]
@@ -23,8 +23,19 @@ proximity_fade_distance = 0.25
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.249284, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="CurveTexture" id="CurveTexture_f46kd"]
+curve = SubResource("Curve_xh1e2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3rerk"]
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.75
+scale_curve = SubResource("CurveTexture_f46kd")
+
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_ffboj")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -40,19 +51,14 @@ texture_albedo = ExtResource("3_0c7wt")
 modulate = Color(1, 1, 1, 0.705882)
 normal_fade = 0.5
 
-[node name="ParticlesTrail" type="CPUParticles3D" parent="."]
+[node name="ParticlesTrail" type="GPUParticles3D" parent="."]
 physics_interpolation_mode = 2
 material_override = SubResource("StandardMaterial3D_q7stj")
 cast_shadow = 0
 amount = 60
-mesh = ExtResource("4_mvhqy")
-emission_shape = 1
-emission_sphere_radius = 0.2
-particle_flag_align_y = true
-direction = Vector3(0, 0, 0)
-gravity = Vector3(0, 0.1, 0)
-scale_amount_min = 0.75
-scale_amount_curve = SubResource("Curve_xh1e2")
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_3rerk")
+draw_pass_1 = ExtResource("4_mvhqy")
 
 [node name="SoundFootsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ics1s")

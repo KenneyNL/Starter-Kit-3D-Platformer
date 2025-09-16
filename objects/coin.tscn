@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dfpisimsgf5ce"]
+[gd_scene load_steps=16 format=4 uid="uid://dfpisimsgf5ce"]
 
 [ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/Textures/colormap.png" id="2_04qt4"]
 [ext_resource type="Script" uid="uid://0gfgixhikw1y" path="res://objects/coin.gd" id="2_gaakh"]
@@ -45,9 +45,14 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wqkpw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkafy"]
+albedo_color = Color(0.94070613, 0.8365553, 0.532531, 1)
 albedo_texture = ExtResource("2_04qt4")
 rim_enabled = true
-rim = 0.5
+rim = 0.4
+rim_tint = 0.8
+stencil_flags = 2
+stencil_color = Color(0.77665097, 0.44749326, 0.13616946, 1)
+stencil_outline_thickness = 0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bnkeq"]
 
@@ -59,14 +64,32 @@ billboard_mode = 1
 billboard_keep_scale = true
 proximity_fade_enabled = true
 
-[sub_resource type="QuadMesh" id="QuadMesh_744xy"]
+[sub_resource type="Gradient" id="Gradient_7tsk2"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1o7s2"]
+gradient = SubResource("Gradient_7tsk2")
 
 [sub_resource type="Curve" id="Curve_6a7l3"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_7tsk2"]
-colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+[sub_resource type="CurveTexture" id="CurveTexture_iwokp"]
+curve = SubResource("Curve_6a7l3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hyi47"]
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.5
+damping_max = 0.5
+scale_min = 0.15
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_iwokp")
+color_ramp = SubResource("GradientTexture1D_1o7s2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_744xy"]
 
 [node name="coin" type="Area3D"]
 script = ExtResource("2_gaakh")
@@ -81,19 +104,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xkafy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_bnkeq")
 
-[node name="Particles" type="CPUParticles3D" parent="."]
+[node name="Particles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.447834, 0)
 material_override = SubResource("StandardMaterial3D_6hm51")
-mesh = SubResource("QuadMesh_744xy")
-direction = Vector3(1, 1, 1)
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_max = 1.0
-damping_min = 0.5
-damping_max = 0.5
-scale_amount_min = 0.15
-scale_amount_max = 0.15
-scale_amount_curve = SubResource("Curve_6a7l3")
-color_ramp = SubResource("Gradient_7tsk2")
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_hyi47")
+draw_pass_1 = SubResource("QuadMesh_744xy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
