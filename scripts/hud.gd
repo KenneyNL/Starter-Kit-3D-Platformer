@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 func _on_coin_collected(coins):
 	
