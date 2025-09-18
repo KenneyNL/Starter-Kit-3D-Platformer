@@ -12,5 +12,5 @@ distance_fade_max_distance = 3.0
 [node name="cube" instance=ExtResource("1_pjiy0")]
 script = ExtResource("2_hugjq")
 
-[node name="cube2" parent="." index="0"]
+[node name="cloud2" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m5bs8")

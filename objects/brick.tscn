@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cs417o1y08xb1" path="res://models/brick.glb" id="1_lex57"]
 [ext_resource type="Script" uid="uid://b1egvfagp7vs1" path="res://objects/brick.gd" id="2_hbwgr"]
 [ext_resource type="Material" uid="uid://booc27br2ap2l" path="res://models/colormap.tres" id="3_2u2la"]
-[ext_resource type="ArrayMesh" uid="uid://ddrdfs0j71wla" path="res://meshes/brick.res" id="4_pm7ss"]
+[ext_resource type="ArrayMesh" uid="uid://bkyb0o2ipxxya" path="res://meshes/brick.res" id="4_pm7ss"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a8y0u"]
 size = Vector3(0.75, 0.75, 0.75)
