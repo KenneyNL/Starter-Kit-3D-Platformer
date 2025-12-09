@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Export to Asset-lib
-    runs-on: macos-latest
+    runs-on: ${{ vars.ACTIONS_RUNNER }}
 
     env:
       uploadUrl: ${{ secrets.uploadUrl }}
