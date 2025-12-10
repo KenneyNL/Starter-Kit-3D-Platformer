@@ -1,19 +1,19 @@
 extends Node3D
 
 var falling := false
-var gravity := 0.0
+var fall_velocity := 0.0
 
-func _process(delta):
+func _physics_process(delta):
 	scale = scale.lerp(Vector3(1, 1, 1), delta * 10) # Animate scale
 	
-	position.y -= gravity * delta
+	if falling:
+		fall_velocity += 15.0 * delta
+		position.y -= fall_velocity * delta
+	else:
+		fall_velocity = 0.0
 	
 	if position.y < -10:
 		queue_free() # Remove platform if below threshold
-	
-	if falling:
-		gravity += 0.25
-
 
 func _on_body_entered(_body):
 	if !falling:

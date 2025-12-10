@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://85ldumyetgou"]
+
+[ext_resource type="PackedScene" uid="uid://cs417o1y08xb1" path="res://models/brick.glb" id="1_lex57"]
+[ext_resource type="Script" uid="uid://b1egvfagp7vs1" path="res://objects/brick.gd" id="2_hbwgr"]
+[ext_resource type="Material" uid="uid://booc27br2ap2l" path="res://models/colormap.tres" id="3_2u2la"]
+[ext_resource type="ArrayMesh" uid="uid://bkyb0o2ipxxya" path="res://meshes/brick.res" id="4_pm7ss"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a8y0u"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jkv2x"]
+size = Vector3(0.5, 0.25, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_pm7ss"]
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1o7s2"]
+gradient = SubResource("Gradient_pm7ss")
+
+[sub_resource type="Curve" id="Curve_y3bws"]
+_data = [Vector2(0.0075757504, 0.8651686), 0.0, 0.018773995, 0, 0, Vector2(0.9924243, 0), -3.356592, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iwokp"]
+curve = SubResource("Curve_y3bws")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mi6g1"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.6
+direction = Vector3(0, 10, 0)
+spread = 40.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+linear_accel_min = -2.0000021
+linear_accel_max = -1.0000023
+scale_min = 0.29999998
+scale_curve = SubResource("CurveTexture_iwokp")
+color_ramp = SubResource("GradientTexture1D_1o7s2")
+
+[node name="brick" type="StaticBody3D"]
+script = ExtResource("2_hbwgr")
+
+[node name="Mesh" parent="." instance=ExtResource("1_lex57")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("BoxShape3D_a8y0u")
+
+[node name="BottomDetector" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_jkv2x")
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25192702, 0)
+material_override = ExtResource("3_2u2la")
+emitting = false
+amount = 5
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.25
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_mi6g1")
+draw_pass_1 = ExtResource("4_pm7ss")
