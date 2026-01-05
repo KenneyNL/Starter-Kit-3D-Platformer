@@ -26,7 +26,7 @@ func explode():
 	
 	mesh.hide()
 	$CollisionShape3D.disabled = true
-	bottom_detector.monitoring = false
+	bottom_detector.set_deferred("monitoring", false)
 	
 	await get_tree().create_timer(1).timeout
 	queue_free()
