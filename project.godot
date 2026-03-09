@@ -29,15 +29,9 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={
-"characterdialogictest": "res://characterdialogictest.dch"
-}
+directories/dch_directory={}
 directories/dtl_directory={}
 layout/style_directory={}
-layout/style_list=[]
-layout/default_style="Default"
-glossary/default_case_sensitive=true
-variables={}
 
 [display]
 
