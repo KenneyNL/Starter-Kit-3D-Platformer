@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://de13fdeebrkcb"]
+
+[ext_resource type="Script" uid="uid://cyjmcay08lmr8" path="res://addons/dialogic/Editor/Events/BranchEnd.gd" id="1"]
+
+[node name="EndBranch" type="HBoxContainer" unique_id=1281051416]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+mouse_filter = 0
+script = ExtResource("1")
+
+[node name="Indent" type="Control" parent="." unique_id=1267249634]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Spacer" type="Control" parent="." unique_id=818747539]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="Button" parent="." unique_id=489933577]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Click and drag"
+focus_mode = 0
+mouse_filter = 1
+flat = true

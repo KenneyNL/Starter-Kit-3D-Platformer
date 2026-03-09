@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bmwv82dpg8v6v"]
+
+[ext_resource type="AudioStream" uid="uid://b15yaq8i3ifbw" path="res://sounds/music/ShortSampleSong.wav" id="1_27llx"]
+
+[node name="AudioStreamPlayer - Music" type="AudioStreamPlayer" unique_id=268359696]
+process_mode = 3
+stream = ExtResource("1_27llx")
+autoplay = true
