@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ysqbusmy0qma"]
+
+[ext_resource type="Script" uid="uid://cvgok7bxva5e2" path="res://addons/dialogic/Editor/TimelineEditor/VisualEditor/timeline_editor_visual.gd" id="1_8smxc"]
+[ext_resource type="Theme" uid="uid://cqst728xxipcw" path="res://addons/dialogic/Editor/Theme/MainTheme.tres" id="2_x0fhp"]
+[ext_resource type="Script" uid="uid://b6ka2avnh1u55" path="res://addons/dialogic/Editor/TimelineEditor/VisualEditor/TimelineArea.gd" id="3_sap1x"]
+[ext_resource type="Script" uid="uid://n1knm2ohcehu" path="res://addons/dialogic/Editor/Events/EventBlock/event_right_click_menu.gd" id="4_ugiq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phyjj"]
+content_margin_top = 10.0
+
+[node name="TimelineVisualEditor" type="MarginContainer" unique_id=1827236598]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_8smxc")
+
+[node name="View" type="HSplitContainer" parent="." unique_id=1893392013]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_x0fhp")
+
+[node name="TimelineArea" type="ScrollContainer" parent="View" unique_id=1257416940]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_phyjj")
+script = ExtResource("3_sap1x")
+
+[node name="Timeline" type="VBoxContainer" parent="View/TimelineArea" unique_id=1887371894]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EventPopupMenu" type="PopupMenu" parent="View/TimelineArea" unique_id=1937370098]
+unique_name_in_owner = true
+size = Vector2i(165, 124)
+script = ExtResource("4_ugiq6")
+
+[node name="RightSidebar" type="ScrollContainer" parent="View" unique_id=269152096]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 0.2
+horizontal_scroll_mode = 0
+
+[node name="EventContainer" type="VBoxContainer" parent="View/RightSidebar" unique_id=151696986]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[connection signal="drag_completed" from="View/TimelineArea" to="." method="_on_timeline_area_drag_completed"]
+[connection signal="id_pressed" from="View/TimelineArea/EventPopupMenu" to="." method="_on_event_popup_menu_id_pressed"]
+[connection signal="resized" from="View/RightSidebar" to="." method="_on_right_sidebar_resized"]

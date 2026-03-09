@@ -1,0 +1,10 @@
+[configuration]
+
+entry_symbol = "git_plugin_init"
+compatibility_minimum = "4.2.0"
+
+[libraries]
+
+linux.editor.x86_64 = "linux/libgit_plugin.linux.editor.x86_64.so"
+macos.editor = "macos/libgit_plugin.macos.editor.universal.dylib"
+windows.editor.x86_64 = "windows/libgit_plugin.windows.editor.x86_64.dll"

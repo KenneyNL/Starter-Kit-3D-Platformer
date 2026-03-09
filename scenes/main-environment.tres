@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bqnqgflivjvue"]
+[gd_resource type="Environment" format=3 uid="uid://bqnqgflivjvue"]
 
 [ext_resource type="Texture2D" uid="uid://cb7sdk1i5rx04" path="res://sprites/skybox.png" id="1_u3n42"]
 
@@ -23,7 +23,6 @@ ssao_power = 15.0
 glow_enabled = true
 glow_levels/2 = 0.6
 glow_levels/3 = 0.6
-glow_levels/5 = 0.0
 glow_intensity = 2.0
 adjustment_enabled = true
 adjustment_brightness = 0.9

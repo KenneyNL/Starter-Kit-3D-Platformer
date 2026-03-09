@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://cqy73hshqqgga"]
+
+[ext_resource type="Script" uid="uid://bl3vudjf3wn2x" path="res://addons/dialogic/Editor/HomePage/home_page.gd" id="1_6g38w"]
+[ext_resource type="Texture2D" uid="uid://cvmlp5nxb2rer" path="res://addons/dialogic/Editor/HomePage/icon_bg.png" id="1_ed1g1"]
+[ext_resource type="Texture2D" uid="uid://bt87p6qlso0ya" path="res://addons/dialogic/Editor/Images/dialogic-logo.svg" id="3_3leok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipcwk"]
+draw_center = false
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.38859996, 0.43326005, 0.58, 0.13725491)
+shadow_size = 75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imi2d"]
+draw_center = false
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+shadow_color = Color(0.796078, 0.572549, 0.933333, 0.0627451)
+shadow_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2afh"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="Gradient" id="Gradient_lt7uf"]
+colors = PackedColorArray(0.296484, 0.648457, 1, 1, 0.732014, 0.389374, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2klx3"]
+gradient = SubResource("Gradient_lt7uf")
+fill_from = Vector2(0.151515, 0.272727)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_1gns2"]
+offsets = PackedFloat32Array(0.302013, 0.872483)
+colors = PackedColorArray(0.365323, 0.360806, 0.260695, 0, 0.615686, 0.615686, 0.615686, 0.592157)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u0aw3"]
+gradient = SubResource("Gradient_1gns2")
+fill = 1
+fill_from = Vector2(0.497835, 0.493506)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_vepxx"]
+variation_embolden = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_w8q1h"]
+font = SubResource("FontVariation_vepxx")
+font_size = 40
+stacked_outline_count = 2
+stacked_outline_0/size = 6
+stacked_outline_0/color = Color(0.6229163, 0.3652656, 0.1965133, 1)
+stacked_outline_1/size = 9
+stacked_outline_1/color = Color(0.7963555, 0.5017075, 0.35616115, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7ka2"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_es88k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce6uo"]
+content_margin_left = 7.0
+content_margin_top = 10.0
+content_margin_right = 7.0
+content_margin_bottom = 14.0
+bg_color = Color(1, 1, 1, 0.05882353)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8dvw"]
+
+[node name="HomePage" type="TextureRect" unique_id=1709118815]
+self_modulate = Color(1, 1, 1, 0.2)
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ed1g1")
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("1_6g38w")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=520772615]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=371856246]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ipcwk")
+
+[node name="HomePageBox" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=2038439013]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 350)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TopPanel" type="Panel" parent="CenterContainer/PanelContainer/HomePageBox" unique_id=1010710484]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_imi2d")
+
+[node name="Header2" type="Panel" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel" unique_id=477441375]
+clip_children = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2afh")
+
+[node name="BG" type="TextureRect" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel/Header2" unique_id=198765188]
+modulate = Color(0.65098, 0.65098, 0.65098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+texture = SubResource("GradientTexture2D_2klx3")
+expand_mode = 1
+
+[node name="Vignette" type="TextureRect" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel/Header2" unique_id=1688431700]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -166.0
+offset_bottom = 166.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_u0aw3")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel" unique_id=878918703]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = -13.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel/HBoxContainer" unique_id=1945233535]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.12
+texture = ExtResource("3_3leok")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel/HBoxContainer" unique_id=1496488220]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/HomePageBox/TopPanel/HBoxContainer/Control" unique_id=1415255007]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.23500001
+anchor_bottom = 0.23500001
+offset_left = -8.0
+offset_top = -20.500002
+offset_right = 32.0
+offset_bottom = 42.5
+rotation = -0.30892327
+text = "2"
+label_settings = SubResource("LabelSettings_w8q1h")
+metadata/_edit_use_anchors_ = true
+
+[node name="BottomPanel" type="PanelContainer" parent="CenterContainer/PanelContainer/HomePageBox" unique_id=330996494]
+unique_name_in_owner = true
+self_modulate = Color(0.1021275, 0.1021275, 0.1021275, 1)
+show_behind_parent = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7ka2")
+
+[node name="VersionLabel" type="Label" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel" unique_id=949857528]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+text = "2.0-Alpha-19 WIP (Godot 4.3+)"
+horizontal_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel" unique_id=557763215]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer" unique_id=15728145]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="CenterContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer" unique_id=1137363955]
+layout_mode = 2
+size_flags_stretch_ratio = 0.4
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=982557830]
+layout_mode = 2
+theme_type_variation = &"DialogicSection"
+theme_override_constants/line_spacing = 0
+text = "Documentation"
+
+[node name="WikiButton" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=1030865985]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Wiki"
+underline = 2
+uri = "https://docs.dialogic.pro/"
+
+[node name="WikiGettingStartedButton" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=2077412255]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Getting Started"
+underline = 2
+uri = "https://docs.dialogic.pro/getting-started.html"
+
+[node name="Separator" type="Control" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=783926543]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=2037021503]
+layout_mode = 2
+theme_type_variation = &"DialogicSection"
+text = "Get in touch"
+
+[node name="BugRequestButton" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=1518203797]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Bug / Request"
+underline = 2
+uri = "https://github.com/dialogic-godot/dialogic/issues/new/choose"
+
+[node name="DiscordButton" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=637273404]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Discord"
+underline = 2
+uri = "https://discord.gg/2hHQzkf2pX"
+
+[node name="Website" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=379796324]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Website"
+underline = 2
+uri = "https://dialogic.pro/"
+
+[node name="DonateButton" type="LinkButton" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer" unique_id=997916665]
+layout_mode = 2
+theme_type_variation = &"DialogicLink"
+text = "  Donate"
+underline = 2
+uri = "https://www.patreon.com/JowanSpooner"
+
+[node name="CenterContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer" unique_id=1248291817]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2" unique_id=1975904286]
+layout_mode = 2
+
+[node name="WelcomeText" type="RichTextLabel" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2" unique_id=1779879348]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_es88k")
+bbcode_enabled = true
+text = "[center]Welcome to Dialogic, a plugin that lets you easily create stories and dialogs for your game!
+
+If you are new, start by creating a timeline or character!"
+fit_content = true
+
+[node name="RandomTipSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2" unique_id=21727726]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -4
+alignment = 1
+
+[node name="RandomTipLabel" type="Label" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2/RandomTipSection" unique_id=520311592]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DialogicSection"
+theme_override_colors/font_color = Color(0.42, 0.67, 0.96, 1)
+text = "Random Tip"
+
+[node name="TipBox" type="PanelContainer" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2/RandomTipSection" unique_id=1833114158]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ce6uo")
+
+[node name="RandomTip" type="RichTextLabel" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2/RandomTipSection/TipBox" unique_id=603572674]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a8dvw")
+bbcode_enabled = true
+text = "[i]You can[/i] [b]create custom[/b] events, [i][b]subsystems, text effects and even editors for[/b][i] [code]dialogic!"
+fit_content = true
+
+[node name="RandomTipMoreButton" type="Button" parent="CenterContainer/PanelContainer/HomePageBox/BottomPanel/ScrollContainer/HBoxContainer/CenterContainer2/RandomTipSection/TipBox/RandomTip" unique_id=327297471]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = 2.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Check it out!"
