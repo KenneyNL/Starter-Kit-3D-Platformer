@@ -10,3 +10,7 @@ func _ready() -> void:
 		$Sun.light_energy = 0.24
 		$Sun.shadow_opacity = 0.85
 		$Environment.environment.background_energy_multiplier = 0.25
+
+
+func _on_chat_detect_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
