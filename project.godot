@@ -29,8 +29,12 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"characterdialogictest": "res://characterdialogictest.dch"
+}
+directories/dtl_directory={
+"maintimeline": "res://maintimeline.dtl"
+}
 layout/style_directory={}
 
 [display]

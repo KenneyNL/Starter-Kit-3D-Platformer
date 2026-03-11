@@ -2,6 +2,7 @@ extends Node3D
 
 
 func _ready() -> void:
+	Dialogic.start("maintimeline")
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
 		# Reduce background and sun brightness when using the Compatibility renderer;
 		# this tries to roughly match the appearance of Forward+.
