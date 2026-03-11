@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="13_drtpy"]
 [ext_resource type="PackedScene" uid="uid://bh3dms788fwd0" path="res://models/bat_model.glb" id="13_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
+[ext_resource type="AudioStream" uid="uid://b15yaq8i3ifbw" path="res://sounds/music/ShortSampleSong.wav" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jbj1t"]
@@ -236,5 +237,8 @@ text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="body_entered" from="testnpc/chat_detect" to="testnpc" method="_on_chat_detect_body_entered"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1553367677]
+stream = ExtResource("17_muem4")
+autoplay = true
+
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
