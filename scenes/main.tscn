@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
 [ext_resource type="AudioStream" uid="uid://b15yaq8i3ifbw" path="res://sounds/music/ShortSampleSong.wav" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
+[ext_resource type="Texture2D" uid="uid://dkdj4dqjyantk" path="res://sprites/charactersprite.png" id="19_0ld40"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jbj1t"]
 
@@ -240,5 +241,11 @@ metadata/_edit_use_anchors_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1553367677]
 stream = ExtResource("17_muem4")
 autoplay = true
+
+[node name="camry" type="Sprite3D" parent="." unique_id=964946080]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.824805, 2.3711946, -1.1117556)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("19_0ld40")
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
