@@ -1,5 +1,5 @@
+hondacharacter: yo its me the honda civic
 hondacharacter: you did it. go to the bat.
-hondacharacter: yo its me the honda
 if {progress} == true:
 	jump finaltimeline/
 	set {progress_2} = true

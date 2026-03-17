@@ -21,6 +21,7 @@
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 [ext_resource type="Texture2D" uid="uid://dkdj4dqjyantk" path="res://sprites/charactersprite.png" id="19_0ld40"]
 [ext_resource type="Script" uid="uid://bqvbt1mngahda" path="res://scenes/area_uno.gd" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://dxuifx384owpm" path="res://models/Tree.glb" id="22_jscy8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yc10j"]
 
@@ -272,6 +273,11 @@ script = ExtResource("21_yc10j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area unoooo" unique_id=1213361605]
 shape = SubResource("CylinderShape3D_yc10j")
+
+[node name="Tree" parent="." unique_id=1538433455 instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.079046, 2.7465682, -0.9094839)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tree" unique_id=1586110105]
 
 [connection signal="body_entered" from="area 2" to="." method="_on_area_2_body_entered"]
 [connection signal="body_entered" from="area 2" to="area 2" method="_on_body_entered"]
