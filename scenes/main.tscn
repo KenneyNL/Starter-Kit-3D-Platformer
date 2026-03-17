@@ -248,4 +248,6 @@ billboard = 2
 texture_filter = 0
 texture = ExtResource("19_0ld40")
 
+[connection signal="body_entered" from="testnpc/chat_detect" to="testnpc" method="_on_chat_detect_body_entered"]
+[connection signal="body_exited" from="testnpc/chat_detect" to="testnpc" method="_on_chat_detect_body_exited"]
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]

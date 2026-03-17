@@ -156,8 +156,22 @@ func jump():
 
 # Collecting coins
 
+var player_in_range = false
+var current_npc = null
+var dialogue_triggered = false
+
 func collect_coin():
-
 	coins += 1
+	coin_collected.emit(coins)	
+	
+	Dialogic.VAR.coin_collected = coins
+	
+	if coins >= 3 and !dialogue_triggered:
+		dialogue_triggered = true
+		
+		if current_npc:
+			Dialogic.start("maintimeline")
 
-	coin_collected.emit(coins)
+
+func player():
+	pass

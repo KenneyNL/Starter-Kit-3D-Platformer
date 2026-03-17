@@ -23,7 +23,7 @@
 },
 &"default_portrait": "New portrait",
 &"description": "",
-&"display_name": "Characterdialogictest",
+&"display_name": "voice in head",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
@@ -40,6 +40,15 @@
 "New portrait": {
 "export_overrides": {
 "image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Res://icon": {
+"export_overrides": {
+"image": "\"res://icon.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

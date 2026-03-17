@@ -1,3 +1,11 @@
-characterdialogictest: welcome to the game!
-batcharacter: Do my quest
-Collect the coins for me
+[style]
+if {Has_seen_welcome} == false:
+	characterdialogictest (Res://icon): welcome to the game!
+	set {Has_seen_welcome} = true
+if {coin_collected} >= 3.0:
+	batcharacter: thank you for the coins. go see the honda
+	jump battimeline/
+else:
+	batcharacter: Collect the coins for me
+	batcharacter: once you collected at least 3 coins go jump into the clouds
+do Dialogic.start_timeline()
