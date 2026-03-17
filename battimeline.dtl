@@ -1,2 +1,5 @@
+hondacharacter: you did it. go to the bat.
 hondacharacter: yo its me the honda
-hondacharacter: you did it
+if {progress} == true:
+	jump finaltimeline/
+	set {progress_2} = true

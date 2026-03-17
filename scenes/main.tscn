@@ -3,6 +3,7 @@
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_ahusb"]
 [ext_resource type="Script" uid="uid://djpme521r3cxe" path="res://scripts/main.gd" id="1_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_onms2"]
+[ext_resource type="Script" uid="uid://baxw1j1u3ubcv" path="res://scenes/area_3d.gd" id="3_gqmmt"]
 [ext_resource type="Script" uid="uid://x3bka8yqvmi6" path="res://scenes/testnpc.gd" id="3_muem4"]
 [ext_resource type="Script" uid="uid://bcg2kkbsnttec" path="res://scripts/view.gd" id="5_bg0fr"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="6_sdmev"]
@@ -19,6 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://b15yaq8i3ifbw" path="res://sounds/music/ShortSampleSong.wav" id="17_muem4"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="17_tk810"]
 [ext_resource type="Texture2D" uid="uid://dkdj4dqjyantk" path="res://sprites/charactersprite.png" id="19_0ld40"]
+[ext_resource type="Script" uid="uid://bqvbt1mngahda" path="res://scenes/area_uno.gd" id="21_yc10j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yc10j"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jbj1t"]
 
@@ -30,19 +34,31 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.376471)
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yc10j"]
+
 [node name="Main" type="Node3D" unique_id=1074273423]
 script = ExtResource("1_jkv2x")
 
 [node name="Environment" type="WorldEnvironment" parent="." unique_id=1290585016]
 environment = ExtResource("1_ahusb")
 
+[node name="area 2" type="Area3D" parent="." unique_id=986738082]
+transform = Transform3D(0.84714043, 0.531369, 0, -0.531369, 0.84714043, 0, 0, 0, 2.7884269, -18.849916, 2.0311313, 3.2333212)
+disable_mode = 2
+script = ExtResource("3_gqmmt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area 2" unique_id=448453730]
+transform = Transform3D(2.4141397, -0.34353244, 0, 0.6314015, 1.3134828, 0, 0, 0, 1.6759602, 0, 0, 0)
+shape = SubResource("BoxShape3D_yc10j")
+
 [node name="testnpc" type="CharacterBody3D" parent="." unique_id=281277386]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.9086063, 0.8703736, -1.2709224)
+transform = Transform3D(0.18007281, 0, 0.9836533, 0, 1, 0, -0.9836533, 0, 0.18007281, -5.589764, 0.8703736, 3.046141)
 script = ExtResource("3_muem4")
 
 [node name="bat_model" parent="testnpc" unique_id=422253446 instance=ExtResource("13_jbj1t")]
 
 [node name="chat_detect" type="Area3D" parent="testnpc" unique_id=1968720202]
+disable_mode = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="testnpc/chat_detect" unique_id=32118031]
 shape = SubResource("CylinderShape3D_jbj1t")
@@ -53,6 +69,7 @@ shape = SubResource("CapsuleShape3D_jbj1t")
 
 [node name="Player" parent="." unique_id=367670629 node_paths=PackedStringArray("view") groups=["player"] instance=ExtResource("2_onms2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.49277484, 0)
+disable_mode = 2
 view = NodePath("../View")
 
 [node name="View" type="Node3D" parent="." unique_id=1306011423 node_paths=PackedStringArray("target")]
@@ -122,13 +139,13 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.635, 0)
 
 [node name="coin10" parent="World" unique_id=659527915 instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.635, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124548435, 0.635, -0.16139936)
 
 [node name="coin2" parent="World" unique_id=612364789 instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -0.33003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.899189, 3.4731693, -5.2724276)
 
 [node name="coin3" parent="World" unique_id=1061308418 instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -1.33003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9828115, 1.97005, -2.2873065)
 
 [node name="coin5" parent="World" unique_id=1206547404 instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7731, 2.54941, -2.28223)
@@ -146,7 +163,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9647, 0.801836, 3.99354)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -6)
 
 [node name="coin4" parent="World" unique_id=1084881902 instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -2.33003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.233737, 2.5165992, -3.1443467)
 
 [node name="coin11" parent="World" unique_id=1001165616 instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7093306, 5.3392777, -2.0042212)
@@ -243,11 +260,22 @@ stream = ExtResource("17_muem4")
 autoplay = true
 
 [node name="camry" type="Sprite3D" parent="." unique_id=964946080]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -5.824805, 2.3711946, -1.1117556)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -19.471392, 2.3711946, 2.0043871)
 billboard = 2
 texture_filter = 0
 texture = ExtResource("19_0ld40")
 
+[node name="Area unoooo" type="Area3D" parent="." unique_id=1674895488]
+transform = Transform3D(2.1161609, 1.0306559, 0, -1.3273622, 1.6431336, 0, 0, 0, 2.7884269, -4.8010178, 0.6772275, 3.8754163)
+disable_mode = 2
+script = ExtResource("21_yc10j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area unoooo" unique_id=1213361605]
+shape = SubResource("CylinderShape3D_yc10j")
+
+[connection signal="body_entered" from="area 2" to="." method="_on_area_2_body_entered"]
+[connection signal="body_entered" from="area 2" to="area 2" method="_on_body_entered"]
 [connection signal="body_entered" from="testnpc/chat_detect" to="testnpc" method="_on_chat_detect_body_entered"]
 [connection signal="body_exited" from="testnpc/chat_detect" to="testnpc" method="_on_chat_detect_body_exited"]
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
+[connection signal="body_entered" from="Area unoooo" to="Area unoooo" method="_on_body_entered"]

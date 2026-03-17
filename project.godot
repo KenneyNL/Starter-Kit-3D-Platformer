@@ -36,6 +36,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "battimeline": "res://battimeline.dtl",
+"finaltimeline": "res://finaltimeline.dtl",
 "maintimeline": "res://maintimeline.dtl"
 }
 layout/style_directory={}
@@ -74,7 +75,9 @@ audio/channel_defaults={
 }
 variables={
 "Has_seen_welcome": false,
-"coin_collected": 0
+"coin_collected": 0,
+"progress": false,
+"progress_2": false
 }
 layout/style_list=[]
 layout/default_style=""

@@ -3,9 +3,9 @@ if {Has_seen_welcome} == false:
 	characterdialogictest (Res://icon): welcome to the game!
 	set {Has_seen_welcome} = true
 if {coin_collected} >= 3.0:
-	batcharacter: thank you for the coins. go see the honda
+	batcharacter: thank you for the coins.
 	jump battimeline/
 else:
 	batcharacter: Collect the coins for me
-	batcharacter: once you collected at least 3 coins go jump into the clouds
+	batcharacter: once you collected at least 3 coins go to me, then honda.
 do Dialogic.start_timeline()
