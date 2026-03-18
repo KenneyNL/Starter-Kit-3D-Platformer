@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<materialx version="1.39" fileprefix="./">
+  <open_pbr_surface ypos="-1.879310" type="surfaceshader" xpos="6.159420" name="Rock058_1K_PNG_OpenPbrSurface">
+    <input type="color3" nodename="Rock058_1K_PNG_Color" name="base_color" />
+    <input type="vector3" nodename="NormalMap" name="geometry_normal" />
+    <input type="float" nodename="Rock058_1K_PNG_Roughness" name="specular_roughness" />
+  </open_pbr_surface>
+  <surfacematerial ypos="0.000000" type="material" xpos="8.695652" name="Rock058_1K_PNG">
+    <input type="surfaceshader" nodename="Rock058_1K_PNG_OpenPbrSurface" name="surfaceshader" />
+    <input type="displacementshader" nodename="displacement" name="displacementshader" />
+  </surfacematerial>
+  <tiledimage ypos="-3.103448" type="color3" xpos="3.623188" name="Rock058_1K_PNG_Color">
+    <input value="Rock058_1K-PNG_Color.png" type="filename" colorspace="srgb_texture" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <tiledimage ypos="5.163793" type="float" xpos="3.623188" name="Rock058_1K_PNG_Displacement">
+    <input value="Rock058_1K-PNG_Displacement.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <displacement ypos="1.879310" type="displacementshader" xpos="6.159420" name="displacement">
+    <input type="float" nodename="Rock058_1K_PNG_Displacement" name="displacement" />
+    <input value="1.0" type="float" name="scale" />
+  </displacement>
+  <tiledimage ypos="0.879310" type="vector3" xpos="1.086957" name="Rock058_1K_PNG_NormalGL">
+    <input value="Rock058_1K-PNG_NormalGL.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+  <normalmap ypos="3.586207" type="vector3" xpos="3.623188" name="NormalMap">
+    <input type="vector3" nodename="Rock058_1K_PNG_NormalGL" name="in" />
+    <input value="1.0" type="float" name="scale" />
+  </normalmap>
+  <tiledimage ypos="-0.413793" type="float" xpos="3.623188" name="Rock058_1K_PNG_Roughness">
+    <input value="Rock058_1K-PNG_Roughness.png" type="filename" name="file" />
+    <input value="1.0, 1.0" type="vector2" name="uvtiling" />
+  </tiledimage>
+</materialx>

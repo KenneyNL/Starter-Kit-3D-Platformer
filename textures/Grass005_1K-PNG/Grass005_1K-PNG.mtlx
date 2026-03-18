@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<materialx version="1.39" fileprefix="./">
+  <open_pbr_surface type="surfaceshader" ypos="-1.879310" name="Grass005_1K_PNG_OpenPbrSurface" xpos="6.159420">
+    <input type="color3" name="base_color" nodename="Grass005_1K_PNG_Color" />
+    <input type="vector3" name="geometry_normal" nodename="NormalMap" />
+    <input type="float" name="specular_roughness" nodename="Grass005_1K_PNG_Roughness" />
+  </open_pbr_surface>
+  <surfacematerial type="material" ypos="0.000000" name="Grass005_1K_PNG" xpos="8.695652">
+    <input type="surfaceshader" name="surfaceshader" nodename="Grass005_1K_PNG_OpenPbrSurface" />
+    <input type="displacementshader" name="displacementshader" nodename="displacement" />
+  </surfacematerial>
+  <tiledimage type="color3" ypos="-3.103448" name="Grass005_1K_PNG_Color" xpos="3.623188">
+    <input type="filename" value="Grass005_1K-PNG_Color.png" colorspace="srgb_texture" name="file" />
+    <input type="vector2" value="1.0, 1.0" name="uvtiling" />
+  </tiledimage>
+  <tiledimage type="float" ypos="5.163793" name="Grass005_1K_PNG_Displacement" xpos="3.623188">
+    <input type="filename" value="Grass005_1K-PNG_Displacement.png" name="file" />
+    <input type="vector2" value="1.0, 1.0" name="uvtiling" />
+  </tiledimage>
+  <displacement type="displacementshader" ypos="1.879310" name="displacement" xpos="6.159420">
+    <input type="float" name="displacement" nodename="Grass005_1K_PNG_Displacement" />
+    <input type="float" value="1.0" name="scale" />
+  </displacement>
+  <tiledimage type="vector3" ypos="0.879310" name="Grass005_1K_PNG_NormalGL" xpos="1.086957">
+    <input type="filename" value="Grass005_1K-PNG_NormalGL.png" name="file" />
+    <input type="vector2" value="1.0, 1.0" name="uvtiling" />
+  </tiledimage>
+  <normalmap type="vector3" ypos="3.586207" name="NormalMap" xpos="3.623188">
+    <input type="vector3" name="in" nodename="Grass005_1K_PNG_NormalGL" />
+    <input type="float" value="1.0" name="scale" />
+  </normalmap>
+  <tiledimage type="float" ypos="-0.413793" name="Grass005_1K_PNG_Roughness" xpos="3.623188">
+    <input type="filename" value="Grass005_1K-PNG_Roughness.png" name="file" />
+    <input type="vector2" value="1.0, 1.0" name="uvtiling" />
+  </tiledimage>
+</materialx>
